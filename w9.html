@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2 id="para"></h2>
+    <script>
+        
+        async function fetchdata(url){
+            try{
+                const response = await fetch(url);
+                if(response.ok){
+                    return response.json()
+                }else{
+                    throw new Error(document.getElementById('para').innerHTML="Error: Not Found")
+                }
+            }catch(err){
+                console.log(err);
+            }
+        }
+        fetchdata('https://jsonplaceholder.typicode.com/posts/123456789')
+        .then((data)=>console.log(data))
+        .then((err)=>console.log(err))
+        
+    </script>
+</body>
+</html>
